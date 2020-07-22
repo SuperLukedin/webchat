@@ -50,5 +50,7 @@ io.on("connection", (socket) => {
     console.log("Socket connection made")
     socket.on('disconnect', () => {
         console.log(`${socket.username} has disconnected`)
+        io.emit('userLeft', socket.username)
+        users.splice(users.indexOf(socket), 1)
     })
 });
