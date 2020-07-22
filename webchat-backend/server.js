@@ -28,8 +28,8 @@ io.on("connection", (socket) => {
         messages: messages
     })
 
-    socket.on('newUser', username => {
-        console.log(`${socket.username} joined in`)
+    socket.on('newuser', username => {        
+        console.log(`${username} joined in`)
         socket.username = username
         users.push(socket)
 
