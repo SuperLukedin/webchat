@@ -5,6 +5,8 @@ const io = require("socket.io")(http)
 
 var bodyParser = require('body-parser')
 var cors = require('cors')
+const connectDB = require('./DB/Connections')
+const ChatHistory = require('./DB/ChatHistory')
 
 
 app.use(express.static(__dirname + "/public")) // middleware
@@ -12,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(cors())
 
+connectDB()
 
 let users = []
 let messages = []
@@ -42,9 +45,10 @@ io.on("connection", (socket) => {
             username: socket.username,
             msg: msg
         }
-
+        
         messages.push(message)
         io.emit('msg', message)
+        
         index++
     })
     console.log("Socket connection made")
@@ -52,5 +56,18 @@ io.on("connection", (socket) => {
         console.log(`${socket.username} has disconnected`)
         io.emit('userLeft', socket.username)
         users.splice(users.indexOf(socket), 1)
+        
+        if (users.length === 0) {
+            console.log(messages)
+
+            // when no users exist, save the history and clean all the current messages in this socket
+            let chatHistory = {}
+            chatHistory.created_at = new Date().toString()
+            chatHistory.messages = messages
+            let chatHistoryModel = new ChatHistory(chatHistory)
+            chatHistoryModel.save()
+            messages.length = 0            
+            index = 0
+        }
     })
 });

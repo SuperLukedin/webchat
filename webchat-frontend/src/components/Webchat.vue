@@ -1,17 +1,22 @@
 <template>
   <div class="container">
     <div>
-      <h1>Chat Area</h1>
-      <p> User Name: {{ username }}</p>
-      <p> Online: {{ users.length }}</p>
+      <h1>Web Chat</h1>
+      <p> Your User Name: {{ username }}</p>
+      <p> Current Online: {{ users.length }}</p>
     </div>
+    <Board :messages="messages" @sendMessage="this.sendMessage"/>
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client'
+import Board from './board'
 export default {
   name: 'Webchat',
+  components: { 
+    Board
+  },
   data: function() {
     return {
       username: '',
@@ -39,6 +44,9 @@ export default {
       this.socket.on('msg', message => {
         this.messages.push(message)
       })
+    },
+    sendMessage: function (message) {
+      this.socket.emit('msg', message)
     }
   },
   mounted () {
@@ -51,20 +59,5 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
