@@ -1,28 +1,33 @@
 <template>
   <div class="container">
-    <div>
+    <div v-if="!this.isAdmin">
       <h1>Web Chat</h1>
       <p> Your User Name: {{ username }}</p>
       <p> Current Online: {{ users.length }}</p>
     </div>
-    <Board :messages="messages" @sendMessage="this.sendMessage"/>
+    <AdminBoard v-else-if="this.isAdmin"/>
+    <Board v-if="!this.isAdmin" :messages="messages" @sendMessage="this.sendMessage"/>
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client'
 import Board from './board'
+import AdminBoard from './admin/adminBoard'
+
 export default {
   name: 'Webchat',
   components: { 
-    Board
+    Board,
+    AdminBoard
   },
   data: function() {
     return {
       username: '',
       socket: io('http://localhost:3000'),
       messages: [],
-      users: []
+      users: [],
+      isAdmin: false
     }
   },
   methods: {
@@ -51,10 +56,14 @@ export default {
   },
   mounted () {
     this.username = prompt("Please type your user name", "Customer")
-    if (!this.username) {
-      this.username = 'Customer'
+    if (this.username == 'admin') {
+      this.isAdmin = true
+    } else {
+      if (!this.username) {
+        this.username = 'Customer'
+      }
+      this.joinServer()
     }
-    this.joinServer()
   }
 }
 </script>
