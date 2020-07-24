@@ -26,8 +26,11 @@ export default {
     },
     methods: {
         fetchHistories: function () {
-            const API_URL = 'ec2-54-162-102-207.compute-1.amazonaws.com:3000'
-            fetch(API_URL + '/list')
+            const API_URL = 'http://54.162.102.207:3000'
+            fetch(API_URL + '/list', {
+                method: 'GET',
+                mode: 'cors'
+            })
                 .then(res => {
                     return res.json()
                 })
