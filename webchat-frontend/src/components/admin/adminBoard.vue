@@ -1,12 +1,21 @@
 <template>
     <div>
-        <h1>Admin logged</h1>
+        <h1> Admin Dashboard </h1>
+        <div class="adminBoards">
+            <div v-for="history in chatHistories" :key="history._id">
+                <ChatHistoryBoard :history="history" />
+            </div>
+        </div>        
     </div>
 </template>
 
 <script>
+import ChatHistoryBoard from './chatHistoryBoard'
 export default {
     name: 'adminBoard',
+    components: {
+        ChatHistoryBoard
+    },
     data: function () {
         return {
             chatHistories: []
@@ -27,8 +36,15 @@ export default {
                     console.log( this.chatHistories)
                     console.log( this.chatHistories.length)
                 })
-
         }
     }
 }
 </script>  
+
+<style scoped>
+.adminBoards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;    
+}
+</style>

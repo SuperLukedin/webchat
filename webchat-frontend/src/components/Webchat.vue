@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
+  <div>
     <div v-if="!this.isAdmin">
       <h1>Web Chat</h1>
       <p> Your User Name: {{ username }}</p>
       <p> Current Online: {{ users.length }}</p>
     </div>
     <AdminBoard v-else-if="this.isAdmin"/>
-    <Board v-if="!this.isAdmin" :messages="messages" @sendMessage="this.sendMessage"/>
+    <div class="board">
+       <Board v-if="!this.isAdmin" :messages="messages" @sendMessage="this.sendMessage"/>
+    </div>
   </div>
 </template>
 
@@ -69,4 +71,8 @@ export default {
 </script>
 
 <style scoped>
+.board {
+  display: flex;
+  justify-content: center;
+}
 </style>

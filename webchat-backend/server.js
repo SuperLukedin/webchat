@@ -65,10 +65,23 @@ io.on("connection", (socket) => {
 // methods
 async function saveChatHistory(messages) {
     let chatHistory = {}
-    chatHistory.created_at = new Date().toString()
+
+    chatHistory.created_at = constructTime()
     chatHistory.messages = messages
     let chatHistoryModel = new ChatHistory(chatHistory)
     await chatHistoryModel.save()
     messages.length = 0            
     index = 0
+}
+
+function constructTime() {
+    let date_ = new Date()
+    let month = date_.getMonth() + 1
+    let day = date_.getDate()
+    let hour = date_.getHours()
+    let min = date_.getMinutes()
+    let sec = date_.getSeconds()
+    let date = [month, day].join('/')
+    let time = [hour, min, sec].join(':')
+    return date + ' ' + time
 }
