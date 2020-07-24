@@ -26,7 +26,7 @@ export default {
   data: function() {
     return {
       username: '',
-      socket: io('http://localhost:3000'),
+      socket: io('ec2-18-234-117-45.compute-1.amazonaws.com:3000'),
       messages: [],
       users: [],
       isAdmin: false
@@ -74,5 +74,11 @@ export default {
 .board {
   display: flex;
   justify-content: center;
+}
+h1 {
+  color: antiquewhite;
+}
+p {
+  color: antiquewhite;
 }
 </style>

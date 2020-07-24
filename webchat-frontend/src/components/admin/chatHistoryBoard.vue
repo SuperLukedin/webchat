@@ -28,13 +28,20 @@ export default {
 <style scoped>
 .historyBoard {
     border: 1px solid rgb(129, 129, 34);
-    width: 400px;
+    width: 350px;
     height: 400px;
-    margin: 10px 10px;
+    margin: 30px 30px;
     flex-direction: column;
+    background-color: rgb(92, 99, 99);    
     overflow-y: scroll;
+    
+}
+p {
+    color: antiquewhite;
+    font-style: italic;
 }
 .msg {
+    color: antiquewhite;
     margin-left: 10px;
     margin-right: 10px;    
     border-bottom: 1px solid rgb(191, 197, 196);

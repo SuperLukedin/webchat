@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         fetchHistories: function () {
-            const API_URL = 'http://localhost:3000'
+            const API_URL = 'ec2-18-234-117-45.compute-1.amazonaws.com:3000'
             fetch(API_URL + '/list')
                 .then(res => {
                     return res.json()
@@ -46,5 +46,14 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;    
+}
+h1 {
+    color: antiquewhite;
+}
+@media (max-width: 500px) {
+    .adminBoards {
+        display: flex;
+        flex-direction: column;
+    }
 }
 </style>

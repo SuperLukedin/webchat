@@ -1,9 +1,9 @@
 <template>
     <div class="board">
         <div class="textarea">
-            <div class="msg" v-for="message in messages" v-bind:key="message.index">
-                <div class="username"> {{ message.username }}:  </div>
-                <div>{{ message.msg }}</div>                
+            <div class="textline" v-for="message in messages" v-bind:key="message.index">
+                <div class="textline-username"> {{ message.username }}:</div>
+                <div class="textline-msg">{{ message.msg }}</div>                
             </div>                        
         </div>
         <form @submit="sendMessage">
@@ -52,11 +52,16 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    
 }
-.msg {
+.textline {
     display: flex;
 }
-.username {
+.textline-username {
     flex-basis: 15%;
+}
+.textline-msg {
+    max-width: 90%;
+    word-wrap: break-word;
 }
 </style>
