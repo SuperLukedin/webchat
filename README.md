@@ -6,6 +6,7 @@ The app is hosted on AWS. The URL of the app is: http://webchat-bucket.s3-websit
 Visiting from Mobile browser are welcome! :)
 
 ## About webchat
+**Try open it with multiple browser tab :)**
 When you are enter the webapp, you are first required to type your name, and then get into the chat app.<br/> 
 Open multiple browser tab, or mobile browser, will join the same chat.<br/>
 Chat history will be saved **only** after everyone left (close all the browser tab).<br/>
