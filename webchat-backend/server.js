@@ -18,7 +18,7 @@ const connectDB = require('./DB/Connections')
 const ChatHistory = require('./DB/ChatHistory')
 connectDB()
 
-// route
+// API
 app.use('/list', require('./APIs/ListHistory'))
 
  // socket
