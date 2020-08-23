@@ -26,7 +26,7 @@ export default {
   data: function() {
     return {
       username: '',
-      socket: io('ec2-54-162-102-207.compute-1.amazonaws.com:3000'),
+      socket: io('http://localhost:3000'),
       messages: [],
       users: [],
       isAdmin: false

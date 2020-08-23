@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         fetchHistories: function () {
-            const API_URL = 'http://54.162.102.207:3000'
+            const API_URL = 'http://localhost:3000'
             fetch(API_URL + '/list', {
                 method: 'GET',
                 mode: 'cors'
