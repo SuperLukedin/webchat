@@ -1,4 +1,4 @@
-# Webchat application (Vue.js + Node.js + Socket.io)
+# Webchat (Vue.js + Node.js + Socket.io)
 
 ## Web Chat Board
 ![](https://github.com/SuperLukedin/webchat/blob/master/screenshots/chatboard.PNG)
