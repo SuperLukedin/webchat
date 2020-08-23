@@ -1,12 +1,11 @@
 # Webchat application
 
-## App is hosted, click [here](http://webchat-bucket.s3-website-us-east-1.amazonaws.com/).
-## Hosted url may not work, because I suspended the hosting to avoid AWS keep charging me for EC2 and S3 usage... lol
-The app is hosted on AWS. The URL of the app is: http://webchat-bucket.s3-website-us-east-1.amazonaws.com/
+## Web Chat Board
+![](https://github.com/SuperLukedin/webchat/blob/master/screenshots/chatboard.PNG)
 
- 
+## Admin board & all chat histories
+![](https://github.com/SuperLukedin/webchat/blob/master/screenshots/admin%20dashboard.PNG)
 
-Visiting from Mobile browser are welcome! :)
 
 ## About webchat
 **Try open it with multiple browser tabs :)**<br/>
